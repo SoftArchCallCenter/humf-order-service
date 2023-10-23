@@ -3,6 +3,10 @@ import { ArrayNotEmpty, IsNotEmpty, IsNumber, IsString } from "class-validator"
 class Menu {
     
     @IsNotEmpty()
+    @IsNumber()
+    id: number
+
+    @IsNotEmpty()
     @IsString()
     name: string
 
@@ -12,15 +16,21 @@ class Menu {
 
     @IsString()
     description: string
+
+    @IsNotEmpty()
+    @IsNumber()
+    quatity: number
 }
 
 export class CreateOrderDto {
     
-    @IsString()
-    userId: string
+    @IsNotEmpty()
+    @IsNumber()
+    userId: number
 
-    @IsString()
-    resId: string
+    @IsNotEmpty()
+    @IsNumber()
+    resId: number
 
     @ArrayNotEmpty()
     menus: Menu[]
