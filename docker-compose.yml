@@ -1,25 +1,30 @@
 version: '3.8'
 services:
-  # order-service:
-  #   build: ./
-  #   image: order-service
-  #   ports:
-  #     - 4003:4000
-  #   depends_on:
-  #     - mongodb
-  #   volumes:
-  #     - .:/src
-  #   networks:
-  #     - humf-order-service-network
 
   mongodb:
     image: mongo:7.0.2-jammy
+    container_name: mongodb-order-service
     ports:
       - 27100:27017
     volumes:
       - dbdata:/data/db
     networks:
       - humf-order-service-network
+  
+  order-service:
+      build: ./
+      container_name: order-service
+      env_file:
+        - .env
+      ports:
+        - 4003:4000
+      depends_on:
+        - mongodb
+      volumes:
+        - ./src:/app/src
+      command: npm run start:dev
+      networks:
+        - humf-order-service-network
 
 volumes:
   dbdata:
