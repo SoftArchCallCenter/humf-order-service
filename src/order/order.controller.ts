@@ -21,7 +21,7 @@ export class OrderController {
   @Post()
   @HttpCode(201)
   create(@Body() createOrderDto: CreateOrderDto) {
-    const result = this.orderService.create(createOrderDto);
+    const result = this.orderService.createOrder(createOrderDto);
     return result
   }
 

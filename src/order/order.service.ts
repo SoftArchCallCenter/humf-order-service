@@ -9,7 +9,7 @@ export class OrderService {
 
     constructor(@InjectModel('Order') private orderModel: Model<Order>) {}
     
-    async create(createOrderDto: CreateOrderDto) {
+    async createOrder(createOrderDto: CreateOrderDto) {
         const order = await this.orderModel.create(createOrderDto)
         return order
     }
