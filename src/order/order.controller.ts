@@ -32,10 +32,10 @@ export class OrderController {
 
   @Get('user/:userId')
   async findByUser(@Param('userId') userId: string, @Res() res: Response) {
-    if(! mongoose.isValidObjectId(userId)){
-      res.status(HttpStatus.BAD_REQUEST).json({err : "Invalid userId"})
-      return;
-    }
+    // if(! mongoose.isValidObjectId(userId)){
+    //   res.status(HttpStatus.BAD_REQUEST).json({err : "Invalid userId"})
+    //   return;
+    // }
     const result = await this.orderService.findByUser(userId);
     return res.status(HttpStatus.OK).json({result})
   }
@@ -47,7 +47,14 @@ export class OrderController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
+    // if(! mongoose.isValidObjectId(id)){
+    //   res.status(HttpStatus.BAD_REQUEST).json({err : "Invalid object"})
+    //   return;
+    // }
+    // const result = this.orderService.findOne(id);
+    // return res.status(HttpStatus.OK).json({result})
     return this.orderService.findOne(id);
+
   }
 
   // @Patch(':id')

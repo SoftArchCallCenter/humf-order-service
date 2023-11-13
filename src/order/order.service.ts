@@ -14,11 +14,6 @@ export class OrderService {
         return order
     }
 
-    // async findAll() {
-    //     const orders = await this.orderModel.find()
-    //     return 
-    // }
-
     async findByUser(userId: string) {
         const orders = await this.orderModel.find({userId})
         return orders
@@ -33,10 +28,6 @@ export class OrderService {
         const order = await this.orderModel.findById(id)
         return order
     }
-
-    // update() {
-    //     return
-    // }
 
     async remove(id: string) {
         const order = await this.orderModel.findByIdAndRemove(id)

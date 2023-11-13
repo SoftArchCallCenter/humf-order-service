@@ -4,10 +4,10 @@ services:
   mongodb:
     image: mongo:7.0.2-jammy
     container_name: mongodb-order-service
+    expose:
+      - 27017
     ports:
-      - 27100:27017
-    volumes:
-      - dbdata:/data/db
+      - 27017:27017
     networks:
       - humf-order-service-network
   
@@ -17,7 +17,7 @@ services:
       env_file:
         - .env
       ports:
-        - 4003:4000
+        - 5000:5000
       depends_on:
         - mongodb
       volumes:
@@ -25,9 +25,6 @@ services:
       command: npm run start:dev
       networks:
         - humf-order-service-network
-
-volumes:
-  dbdata:
 
 networks:
   humf-order-service-network:
