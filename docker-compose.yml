@@ -13,7 +13,6 @@ services:
   
   order-service:
       build: ./
-      image: order-service:1.0
       container_name: order-service
       env_file:
         - .env
@@ -30,4 +29,5 @@ volumes:
 
 networks:
   humf-order-service-network:
-    driver: bridge
+    name: humf-service-network
+    external: true

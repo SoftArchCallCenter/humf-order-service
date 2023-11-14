@@ -32,10 +32,10 @@ export class OrderController {
 
   @Get('user/:userId')
   async findByUser(@Param('userId') userId: string, @Res() res: Response) {
-    if(! mongoose.isValidObjectId(userId)){
-      res.status(HttpStatus.BAD_REQUEST).json({err : "Invalid userId"})
-      return;
-    }
+    // if(! mongoose.isValidObjectId(userId)){
+    //   res.status(HttpStatus.BAD_REQUEST).json({err : "Invalid userId"})
+    //   return;
+    // }
     const result = await this.orderService.findByUser(userId);
     return res.status(HttpStatus.OK).json({result})
   }
