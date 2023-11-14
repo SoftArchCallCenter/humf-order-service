@@ -17,15 +17,20 @@ services:
       env_file:
         - .env
       ports:
-        - 5000:5000
+        - 5002:5000
       depends_on:
         - mongodb
       volumes:
         - ./src:/app/src
       command: npm run start:dev
       networks:
+        - humf-service-network
         - humf-order-service-network
 
 networks:
   humf-order-service-network:
     driver: bridge
+
+  humf-service-network:
+    name: humf-service-network
+    external: true
