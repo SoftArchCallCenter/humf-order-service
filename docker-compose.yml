@@ -20,8 +20,6 @@ services:
         - 5002:5000
       depends_on:
         - mongodb
-      volumes:
-        - ./src:/app/src
       command: npm run start:dev
       networks:
         - humf-service-network
